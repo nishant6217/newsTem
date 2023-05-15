@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>NEWSNext</title>
+    <link rel="shortcut icon" href="newsIcon.ico" type="image/x-icon" />
+    <meta name="keywords" content="HTML, CSS, JavaScript" />
+    <meta name="author" content="Durgesh Channawar" />
+    <link rel="shortcut icon" href="sunrise.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="App.js" ></script>
+  </head>
+
+  <body class="page2">
+    <div class="lds-dual-ring"></div>
+    <header>
+      <h1>NEWSNext</h1>
+    </header>
+
+    <nav>
+      <div id="header">
+        <select id="categorySelect" class="btton">
+          <option value="all">ALL</option>
+          <option value="science">SCIENCE</option>
+          <option value="business">BUSINESS</option>
+          <option value="sports">SPORTS</option>
+          <option value="world">WORLD</option>
+          <option value="politics">POLITICS</option>
+          <option value="hatke">HATKE</option>
+          <option value="automobile">AUTOMOBILE</option>
+        </select>
+        <button class="btton" id="loadNewsButton">Load News</button>
+        <button class="btton" id="loadSavedButton">Saved News</button>
+      </div>
+    </nav>
+
+    <main>
+      <div id="newsContainer"></div>
+    </main>
+  </body>
+</html>

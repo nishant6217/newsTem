@@ -4,34 +4,31 @@ const loadSavedButton = document.querySelector("#loadSavedButton");
 const loadNewsButton = document.querySelector("#loadNewsButton");
 const categorySelect = document.querySelector("#categorySelect");
 
+const firstHalf = document.querySelector(".firstHalf");
+const secondHalf = document.querySelector(".secondHalf");
 
-const firstHalf = document.querySelector('.firstHalf');
-const secondHalf = document.querySelector('.secondHalf');
+setTimeout(() => {
+  firstHalf.style.opacity = "1";
+}, 1000);
 
-		setTimeout(() => {
-			firstHalf.style.opacity = '1';
-		}, 1000);
-
-		setTimeout(() => {
-			secondHalf.style.opacity = '1';
-		}, 3000);
-
+setTimeout(() => {
+  secondHalf.style.opacity = "1";
+}, 3000);
 
 const savedNews = [];
 const handleSavedNews = (savedItem) => {
   savedNews.push(savedItem);
   console.log(savedNews);
-  alert("News saved")
+  alert("News saved");
   saveNews(savedItem);
+};
 
-}
-
-const getNews = (category = "science") => {
+const getNews = async (category = "science") => {
   newsContainer.innerHTML = "";
-  fetch(`https://inshorts.deta.dev/news?category=${category}`)
+  await fetch(`https://inshorts.deta.dev/news?category=${category}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log("Data", data)
+      console.log("Data", data);
       data.data.forEach((newsItem) => {
         const div = document.createElement("div");
         div.classList.add("newsItem");
@@ -48,12 +45,11 @@ const getNews = (category = "science") => {
           </div>
         `;
         const button = document.createElement("button");
-        button.classList.add("btton")
-        button.innerHTML = "SAVE"
+        button.classList.add("btton");
+        button.innerHTML = "SAVE";
         button.onclick = function () {
-          handleSavedNews(newsItem)
-
-        }
+          handleSavedNews(newsItem);
+        };
 
         div.appendChild(button);
         newsContainer.appendChild(div);
@@ -70,15 +66,15 @@ const saveNews = (id) => {
       };
     }
   );
-  console.log("saved news",id)
+  console.log("saved news", id);
   localStorage.setItem("savedNews", JSON.stringify(id));
   JSON.parse(localStorage.getItem("newss"));
 };
 
 const loadSavedNews = () => {
-  console.log("Saved News", savedNews)
+  console.log("Saved News", savedNews);
   newsContainer.innerHTML = "";
-  
+
   if (!savedNews) {
     return;
   }
@@ -96,6 +92,7 @@ const loadSavedNews = () => {
 
 loadSavedButton.addEventListener("click", loadSavedNews);
 loadNewsButton.addEventListener("click", () => {
+  alert("clicked");
   getNews(categorySelect.value);
 });
 

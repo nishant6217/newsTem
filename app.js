@@ -92,7 +92,6 @@ const loadSavedNews = () => {
 
 loadSavedButton.addEventListener("click", loadSavedNews);
 loadNewsButton.addEventListener("click", () => {
-  alert("clicked");
   getNews(categorySelect.value);
 });
 
